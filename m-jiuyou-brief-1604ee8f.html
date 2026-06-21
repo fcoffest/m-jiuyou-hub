@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九游娱乐 · 平台查询与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f6fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            line-height: 1.7;
+            color: #1e2a3a;
+        }
+
+        .hero {
+            background: linear-gradient(145deg, #0b1729 0%, #1a2f44 100%);
+            padding: 5.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(94, 175, 255, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #eef3f9;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #b2cbe0;
+            max-width: 640px;
+            margin: 0 auto;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 3.2rem;
+        }
+
+        .article-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.6rem 2.8rem;
+            box-shadow: 0 4px 24px rgba(0, 12, 28, 0.06);
+            transition: box-shadow 0.2s;
+        }
+
+        .article-card h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #0f2640;
+            margin-bottom: 0.7rem;
+            border-left: 4px solid #2b7bcb;
+            padding-left: 1rem;
+        }
+
+        .lead {
+            font-size: 1.05rem;
+            color: #2c405a;
+            background: #f0f5fc;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0 1.8rem;
+            border-left: 3px solid #2b7bcb;
+        }
+
+        .article-card p {
+            margin: 1.2rem 0;
+            color: #1f2d42;
+        }
+
+        .article-card a {
+            color: #1b6dc0;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, background 0.2s;
+            font-weight: 500;
+        }
+
+        .article-card a:hover {
+            border-bottom-color: #1b6dc0;
+            background: #e6f0fc;
+            border-radius: 2px;
+        }
+
+        .blockquote-wrap {
+            background: #f5f8fe;
+            padding: 1.4rem 2rem;
+            margin: 2rem 0 1.6rem;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .blockquote-wrap::before {
+            content: '▍';
+            color: #2b7bcb;
+            font-size: 2.2rem;
+            position: absolute;
+            left: 0.8rem;
+            top: 0.6rem;
+            opacity: 0.3;
+        }
+
+        .blockquote-wrap p {
+            margin: 0.2rem 0;
+            font-style: normal;
+            color: #1f3954;
+        }
+
+        .blockquote-wrap .source {
+            display: block;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #5f6f82;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .feature-item {
+            background: #f6faff;
+            padding: 1.1rem 1.3rem;
+            border-radius: 16px;
+            border: 1px solid #e5edf6;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0f2640;
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .feature-item span {
+            font-size: 0.9rem;
+            color: #3b526d;
+        }
+
+        .faq-note {
+            margin: 2.4rem 0 0.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px dashed #d6e1ed;
+        }
+
+        .faq-note summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #1a3b5c;
+            padding: 0.3rem 0;
+            font-size: 1.05rem;
+        }
+
+        .faq-note p {
+            margin: 0.6rem 0 0.2rem;
+            color: #2c3e54;
+        }
+
+        .visit-statement {
+            margin-top: 2.4rem;
+            padding: 1.2rem 1.8rem;
+            background: #eef4fa;
+            border-radius: 14px;
+            font-size: 0.96rem;
+            color: #1a2f44;
+            text-align: center;
+        }
+
+        .visit-statement a {
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem 2.8rem;
+            color: #6b7e94;
+            font-size: 0.85rem;
+            background: #f2f6fa;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3.6rem 1rem 2.8rem;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .article-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .article-card h2 {
+                font-size: 1.4rem;
+                padding-left: 0.8rem;
+            }
+            .lead {
+                font-size: 0.98rem;
+                padding: 0.9rem 1.2rem;
+            }
+            .blockquote-wrap {
+                padding: 1rem 1.4rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 1.6rem 1rem 2.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>九游娱乐 · 信息参考</h1>
+    <div class="sub">从日常查询、对照索引到延伸阅读 · 一份面向使用者的简明记录</div>
+</header>
+
+<main class="container">
+    <div class="article-card">
+        <h2>平台结构速览</h2>
+
+        <div class="lead">
+            本文基于公开资料与用户常见查询整理，聚焦平台定位、内容分类与访问方式，适合需要快速建立认知的读者。
+        </div>
+
+        <p>
+            在泛娱乐领域，信息的准确获取与横向比较往往比单一推荐更有价值。许多用户在日常检索时希望了解某个平台的内容构成、服务边界以及相关术语的用法。<a href="https://m--jiuyou.com">九游娱乐</a>作为其中一个活跃的线上站点，其名称经常出现在行业索引与用户讨论中。以下笔记围绕几个常见查询方向展开，供对照参考。
+        </p>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <strong>内容类型</strong>
+                <span>综合分类，涵盖多媒体与互动模块</span>
+            </div>
+            <div class="feature-item">
+                <strong>交互逻辑</strong>
+                <span>统一入口，页面层级简洁</span>
+            </div>
+            <div class="feature-item">
+                <strong>信息密度</strong>
+                <span>以列表与卡片为主，适合快速浏览</span>
+            </div>
+        </div>
+
+        <p>
+            根据多来源对照，该平台在导航结构上偏向「集中展示、分区跳转」的模式，首页承担了枢纽作用。用户在查询时通常关注两点：一是分类是否清晰，二是能否通过少数点击抵达目标页面。从实际体验来看，<a href="https://m--jiuyou.com">九游娱乐</a>的页面布局保持了相对稳定的视觉一致性，这在多次访问中降低了重新适应的成本。
+        </p>
+
+        <div class="blockquote-wrap">
+            <p>检索建议：若需要了解某个具体模块的收录规则或内容更新频次，直接访问对应分类页往往比浏览聚合列表更有效率。</p>
+            <span class="source">—— 基于社区索引与用户反馈整理</span>
+        </div>
+
+        <p>
+            从延伸阅读的角度看，不少用户倾向于将多个平台的内容偏好、界面风格、响应速度等维度并列比较。如果您正在做这类横向调研，将<a href="https://m--jiuyou.com">九游娱乐</a>作为一个参考样本，并将其与其他同类站点进行功能对照，会更容易形成客观判断。需要注意的是，各平台在内容审核、属地合规以及推荐算法上存在差异，直接对比时宜结合官方说明。
+        </p>
+
+        <p>
+            另外，部分查询者会关注平台是否提供移动适配、夜间模式、搜索精度等细节。针对这些常见问题，在<a href="https://m--jiuyou.com">九游娱乐</a>的页面中可以通过简单测试快速获得直观结论。影响体验的变量很多，包括网络环境、终端型号以及个人操作习惯，因此实测往往比二手描述更可靠。
+        </p>
+
+        <details class="faq-note">
+            <summary>FAQ 摘要 · 常见查询点</summary>
+            <p><strong>问：</strong>页面语言是否仅限中文？<br>
+            <strong>答：</strong>主界面为中文，部分内容可能引用通用术语或英文标识。</p>
+            <p><strong>问：</strong>是否需要注册才能浏览？<br>
+            <strong>答：</strong>首页及分类页可直接查看，部分交互功能需要账户支持。</p>
+            <p><strong>问：</strong>与其他类似站点相比，有什么突出特征？<br>
+            <strong>答：</strong>结构上偏重信息陈列，跳转层级控制在三级以内。</p>
+        </details>
+
+        <div class="visit-statement">
+            <span>如需进入平台查阅最新内容，可通过浏览器直接定位至</span>
+            <a href="https://m--jiuyou.com">九游娱乐</a>。
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>本页为独立信息整理 · 内容基于公开资料与常识查询 · 仅供参考</p>
+    <p style="margin-top: 0.3rem;">© 索引参考页</p>
+</footer>
+
+</body>
+</html>
